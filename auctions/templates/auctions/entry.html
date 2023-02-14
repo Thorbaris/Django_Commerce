@@ -1,0 +1,45 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+<h5>Category: <span style="color: #66CC00;"><a style="text-decoration: none;color: #66CC00;" href="{% url 'categoria' product.categ %}">{{ product.categ|title }}</a></span></h5>
+Publisher: {{ product.crator }}
+<br>
+
+<table border="0px" align="center" width="1000">
+	<th width="400px">
+
+	<div style="float: left;">
+		<h2 class="centertext">{{ product.title }}</h2>
+		<br>
+		<img {% if product.img_url %} src="{{ product.img_url }}" {% else %} src="{% static 'auctions/unavailable.jpg' %}" {% endif %} alt= "INSERT" width="400px">
+	</div>
+
+	<th style="background-color: #F8F9FA;border-radius: 90px; text-align: center;">
+	<div>
+		<h3> Current Bid: {{ product.starting_bid }}</h3>
+		<br>
+		<form action="{% url 'entry' product.title %}">
+			{% csrf_token %}
+			<input type="number" placeholder="Enter your bid" name="newbid" style="border-radius: 30px;border: 1px;">
+			<input style="background-color: #20BCD5;border: 0px; border-radius: 30px;padding: 10px;" type="submit" value="Place bid"><br>
+			<input type="submit" name="watchlistbutton" value="Add to Watchlist">
+		</form>
+		<form>
+
+		</form>
+		
+	</div>
+	</th>
+
+</th>
+</table>
+
+
+<h4>Description:</h4>
+<br>
+<h5>{{ product.description }}</h5>
+
+<hr>
+
+
+{% endblock %}

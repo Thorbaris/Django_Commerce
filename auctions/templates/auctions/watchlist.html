@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+
+    <h2>Active Listings</h2>
+
+	<ul>
+		{% for watchlist in watchlists %}
+		{{ watchlist }}
+<!-- 		<li class="listed">
+			<a href="{% url 'entry' result.title %}" style="text-decoration: none;">
+			<table border="0px">
+			<thead>
+			  <tr>
+			    <th colspan="2" class="titlelist">{{ watchlist.title }}</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <td style="width: 200px; height: 200px;"><img {% if result.img_url %} src="{{ result.img_url }}" {% else %} src="{% static 'auctions/unavailable.jpg' %}" {% endif %} width="200px"></td>
+			    <td class="description" style="width: 200px; height: 200px;">{{ watchlist.description|truncatechars:100 }}</td>
+			  </tr>
+			  <tr>
+			    <td colspan="2" class="centertext">${{ watchlist.starting_bid }}</td>
+			  </tr>
+			</tbody>
+			</table>
+			</a>
+		</li> -->
+		{% endfor %}
+        </ul>
+
+
+{% endblock %}

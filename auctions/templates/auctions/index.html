@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block body %}
+	<ul>
+		{% for product in products %}
+		<li class="listed">
+			<a href="{% url 'entry' product.title %}" style="text-decoration: none;">
+			<table border="0px">
+			<thead>
+			  <tr>
+			    <th colspan="2" class="titlelist">{{ product.title }}</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr>
+			    <td style="width: 200px; height: 200px;"><img {% if product.img_url %} src="{{ product.img_url }}" {% else %} src="{% static 'auctions/unavailable.jpg' %}" {% endif %} width="200px"></td>
+			    <td class="description" style="width: 200px; height: 200px;">{{ product.description|truncatechars:100 }}</td>
+			  </tr>
+			  <tr>
+			    <td colspan="2" class="centertext">${{ product.starting_bid }}</td>
+			  </tr>
+			</tbody>
+			</table>
+			</a>
+		</li>
+		    	{% endfor %}
+		</ul>
+
+	
+
+{% endblock %}
